@@ -21,36 +21,49 @@ h1 {
 }
 
 /*** NAV BAR ***/
-.navbar ul {
-  z-index: 1000; /* Ensures the navbar is on top of other elements */
-  list-style-type: none;
-  overflow: hidden;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  margin-top: 0px;
-  margin-bottom: 20px;
   background-color: #414064;
-  border-bottom: 2px solid black;
+  z-index: 1000;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-family: "Jersey 15", sans-serif;
+  font-size: 24px;
+  color: #e2ddb8;
+  text-decoration: none; /* this removes the underline */
+}
+
+.navbar ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar ul li {
-  float: left;
-  margin: 10px;
+  margin-left: 20px;
 }
 
 .navbar ul li a {
   display: block;
-  text-decoration: none; /* removes underline from link */
+  text-decoration: none;
   color: #e2ddb8;
   padding: 5px;
 }
 
 .navbar ul li a:hover {
-border-radius: 3px;
-color:rgb(217, 87, 6);
-background-color: #e2ddb8;
+  border-radius: 3px;
+  color: rgb(217, 87, 6);
+  background-color: #e2ddb8;
 }
 
 /* Main Page background image */
@@ -71,9 +84,11 @@ background-color: #e2ddb8;
 .main-page-bg {
   background-image: url(images/mainPage.png);
 }
-
 .emotion-page-bg {
   background-image: url(images/newEntry.png);
+}
+.journal-page-bg {
+  background-image: url(images/journalEntry.png);
 }
 
 
@@ -84,11 +99,20 @@ background-color: #e2ddb8;
 
   color: #ffffff;
 
-
-  position: absolute;
-  top: 40%;
-  left: 5%; /* or whatever distance from the left you want */
+  margin-top: 300px;
+  position: relative;
+  top: 0;
+  left: 0; /* or whatever distance from the left you want */
   transform: translateY(-50%); /* only move it up vertically now */
+}
+
+.centered {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), -1px -1px 3px rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
@@ -117,7 +141,10 @@ button:hover {
   cursor: pointer;
 }
 
-
+button:active {
+  background-color: grey;
+  transform: scale(0.98);
+}
 
 /* New Entry page to enter emotion and entry*/
 .choose-emotion {
@@ -172,13 +199,34 @@ button:hover {
     gap: 10px;
     padding: 20px;
   }
-img {
-    width: 80px;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.3s;
-  }
 
 img:hover {
     transform: scale(1.1);
   }
+
+
+
+/* TEXT ENTRY FORM */
+.title {
+  background-color: rgba(128, 136, 247, 0.574);
+  padding: 20px;
+  border-radius: 20px;
+  width: 60vw;
+  height: 60vh;
+}
+
+textarea {
+  width: 90%;
+  height: 200px; /* make it tall */
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #999;
+  background-color: rgb(255, 0, 217);
+  resize: none; /* optional: disables manual resizing */
+  box-sizing: border-box; /* makes sure padding doesn't add extra size */
+  line-height: 1.5;
+}
+
+
+
