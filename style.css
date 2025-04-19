@@ -8,11 +8,9 @@
 body {
     font-family: "Jersey 15", sans-serif;
     text-align: center;
-    background: url("./mainPage.png");
-    background-size: cover;
 }
 
-.html {
+html {
   font-family: "Jersey 15", sans-serif;
 }
 
@@ -95,13 +93,16 @@ h1 {
 
 /* Override background for specific pages */
 .main-page-bg {
-  background-image: url(images/mainPage.png);
+  background-image: url(images/Day_Empty.png);
 }
 .emotion-page-bg {
-  background-image: url(images/newEntry.png);
+  background-image: url(images/Day_Sunny.png);
 }
 .journal-page-bg {
-  background-image: url(images/journalEntry.png);
+  background-image: url(images/Day_Sunny.png);
+}
+.garden-page-bg {
+  background-image: url(images/Garden_Start.png);
 }
 
 .snap-left {
@@ -118,6 +119,16 @@ h1 {
 .centered {
   font-weight: normal;
   color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.journal-centered {
+  display: flex;
+  justify-content: space-between;
+
   position: absolute;
   top: 50%;
   left: 50%;
@@ -150,7 +161,6 @@ button {
   color: white;
   border-radius: 25px;
   border: none;
-  
 }
 
 img {
@@ -177,7 +187,10 @@ button:active {
 
 .emotion-buttons {
   display: flex;
-  flex-direction: column; /* stack buttons vertically */
+  flex-direction: r; /* stack buttons vertically */
+
+  flex-wrap: wrap;
+
   align-items: center; /* align to the left (or use center if you prefer) */
   gap: 1rem; /* spacing between buttons */
   margin-top: 20px; /* space above the buttons */
@@ -196,52 +209,69 @@ button:active {
 
 /* FIX THIS */
 .emotions-button button:active {
-  background-color: grey;
+  background-color: rgb(0, 0, 0);
+  color: white;
   transform: scale(0.98);
 }
 
 .happy {
-  width: 150px;
-  background-color: #508056; /* bright yellow */
+  width: 130px;
+  background-color: #477d4f;
   color: white;
 }
 
 .sad {
-  width: 150px;
-  background-color: #1C1A76; /* light blue */
+  width: 130px;
+  background-color: #373685;
   color: white;
 }
 
 .angry {
-  width: 150px;
-  background-color: #9E2123; /* tomato red */
+  width: 130px;
+  background-color: #9E2123;
   color: white;
 }
 
-
-.garden-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 20px;
-  padding: 100px;
-  justify-items: center;
-  align-items: center;
+.anxious {
+  width: 130px;
+  background-color: #610878;
+  color: white;
 }
 
-.garden-grid img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  transition: transform 0.2s;
+.lucky {
+  width: 130px;
+  background-color: #ecd65a;
+  color: white;
 }
 
-.garden-grid img:hover {
-  transform: scale(1.1);
+.calm {
+  width: 130px;
+  background-color: #5b6264;
+  color: white;
 }
 
+#reflection-input {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Prompt Box */
+.prompt-box {
+  margin-top: 20px;
+  padding: 15px;
+  color: #454545;
+  font-size: 1.1rem;
+  font-style: italic;
+  background-color: rgba(255, 255, 255, 0.666);
+  border-radius: 12px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
   
 
-/* TEXT ENTRY FORM */
+/* JOURNAL.HTML : JOURNAL ENTRY */
 .title {
   background-color: #445878;
   padding: 20px;
@@ -259,6 +289,71 @@ button:active {
   font-weight: normal;
 }
 
+.journal-entry-page { /* Example A: This styles elements with class="header" */
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  text-align: center;
+
+  width: 100%;
+  height: 100vh; /* Sets the height to 10% of the viewport height */
+  position: fixed;
+}
+
+.saved-entries-container {
+  background-color: #ffffff71;
+  color: #000000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+
+  max-height:420px;
+  overflow-y:auto;
+}
+
+.entry-list {
+  list-style: none;
+  padding: 0;
+}
+
+.entry-list li {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.entry-date {
+  cursor: pointer;
+  color: #007bff;
+}
+
+.entry-date:hover {
+  text-decoration: underline;
+}
+
+.entry-content {
+  padding: 10px;
+  background-color: #fff;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+
+/*
+<div class="saved-entries-container">
+
+  <ul class="entry-list" id="entry-list">
+      <!-- New entries added here-->
+  </ul>
+
+</div>
+*/
+
+
+
 /* journal text entry box */
 textarea {
   width: 90%;
@@ -275,14 +370,15 @@ textarea {
 
 /* emotions text/buttons box container */
 .mood-container {
+  display: flex;
+
   background-color: #DDE5FF;
   border-radius: 40px;
   padding: 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   border: 1px solid #e6e6e6;
-  margin-left: 100px; /* pushes it to the right */
-  width: 20vw;
-  height: 40vh;
+  margin-left: 80pxpx; /* pushes it to the right */
+  width: 50vw;
   opacity: 0.85;
 }
 
@@ -304,17 +400,63 @@ textarea {
   margin-right: 10px; /* space between buttons */
 }
 
-.mood-message {
-  margin-top: 70px;
-  font-size: 25px;
-  text-align: center;
-  padding: 1rem;
-  background-color: #f0fdf4;
-  border: 2px dashed #94d3a2;
-  border-radius: 12px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+
+/* GARDEN PAGE */
+
+.garden-grid {  
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+  padding: 100px;
+  justify-items: center;
+  align-items: center;
+
+  margin-top: 250px;
+  width: 100%;
+  overflow: hidden;
 }
 
+.garden-grid img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.garden-grid img:hover {
+  transform: scale(1.1);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 40px;
+  box-sizing: border-box;
+}
+
+.footer button {
+  font-family: "Jersey 15", sans-serif;
+  font-size: 25px;
+  padding: 0.8rem 2rem;
+  color: white;
+  border-radius: 25px;
+  border: none;
+}
+
+/* GARDEN.HTML MOOD MESAGE*/
+.footer .mood-message {
+  font-size: 25px;
+  text-align: center;
+  padding: 10px;
+  background-color: #f0fdf490;
+  border: 2px dashed #166828;
+  border-radius: 12px;
+  max-width: 600px;
+}
 
