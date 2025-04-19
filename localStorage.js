@@ -12,6 +12,7 @@ form.addEventListener('submit', function (e) {
   const mood = document.getElementById('mood').value;
   const note = document.getElementById('note').value;
 
+  // Saves last saved entry
   const entry = { mood, note };
   entries.push(entry);
   localStorage.setItem('gardenEntries', JSON.stringify(entries));
