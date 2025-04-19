@@ -34,14 +34,6 @@
 
 ---
 
-## 🚀 How to Use
-
-1. Clone or download this repository:
-   ```bash
-   git clone https://github.com/yourusername/thought-garden.git
-   cd thought-garden
-
----
 
 ## 🎥 Demo Video:
 
