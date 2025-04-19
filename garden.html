@@ -24,13 +24,18 @@
         <div id="garden" class="garden-grid"></div>
         <button onclick="clearGarden()">Clear Garden</button>
 
+        <!-- Mood Support Message -->
+        <div id="mood-message" class="mood-message"></div>
+
 
         <script>
             // Load the plants from local storage and display them
             window.addEventListener('DOMContentLoaded', () => {
                 const garden = document.getElementById('garden');
+                const messageDiv = document.getElementById('mood-message');
                 const moodPlants = JSON.parse(localStorage.getItem('moodPlants')) || [];
 
+                // show plants
                 moodPlants.forEach(({ mood }) => {
                 const plant = document.createElement('img');
                 plant.src = `./plants/${mood}.png`; // make sure you have images like happy.png, sad.png, etc.
@@ -38,6 +43,29 @@
                 plant.classList.add('plant');
                 garden.appendChild(plant);
             });
+
+             // Count moods
+            const moodCounts = { happy: 0, sad: 0, angry: 0 };
+            moodPlants.forEach(({ mood }) => {
+                if (moodCounts[mood] !== undefined) {
+                    moodCounts[mood]++;
+                }
+            });
+
+            // Display message
+            let message = "";
+            if (moodCounts.angry >= 3) {
+                message = "🌩 You've been feeling angry lately. Take a deep breath. Try a walk or journaling your thoughts.";
+            } else if (moodCounts.sad >= 3) {
+                message = "🌧 It's okay to feel sad. Try reaching out to a friend or listening to calming music.";
+            } else if (moodCounts.happy >= 3) {
+                message = "🌞 You're blooming with happiness! Keep it up!";
+            } else {
+                message = "🌱 Every mood matters. Keep nurturing your garden!";
+            }
+
+            messageDiv.textContent = message;
+
         });
         
     </script>

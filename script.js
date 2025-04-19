@@ -1,7 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
   const buttons = document.querySelectorAll('.emotion-buttons button');
-  const garden = document.getElementById('garden');
-
 
   buttons.forEach(button => {
     button.addEventListener('click', () => {
@@ -14,14 +12,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
       alert(`You planted a ${mood} mood!`);
 
-      // Add the plant image to the garden grid
-      const plant = document.createElement('img');
-      plant.src = `./plants/${mood}.png`; // Make sure the images are named correctly (e.g., happy.png, sad.png)
-      plant.alt = mood;
-      plant.classList.add('plant');
-      garden.appendChild(plant);
     
     });
+    
   });
 
 });
