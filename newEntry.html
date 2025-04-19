@@ -15,7 +15,8 @@
     </head>
 
     <body class="newEntryBody">
-    
+        <div class="background-img emotion-page-bg"></div>
+
         <!-- NAVIGATION BAR-->
         <div class="navbar">
             <a href="mainPage.html" class="logo">Thought Garden</a>
@@ -23,27 +24,53 @@
                 <li><a href="garden.html">Garden</a></li>
                 <li><a href="newEntry.html">New Entry</a></li>
                 <li><a href="journal.html">Journal</a></li>
+                <li><a href="reflection.html">Reflections</a></li>
             </ul>
         </div>
 
         <!-- HERO SECTION -->
-    <form id="mood-form">
+    
         <div class="choose-emotion">
+            
             <div class="background-img emotion-page-bg"></div>
+
             <div class = "snap-left">
+
                 <div class="mood-container">
-                    <h3>How are you feeling today?</h3>
-                    <div class="emotion-buttons">
-                        <button class="happy" type="button">Happy</button>
-                        <button class="sad" type="button">Sad</button>
-                        <button class="angry" type="button">Angry</button>
+                    <div class="mood-choice">
+                        <h3>How are you feeling today?</h3>
+                        <div class="emotion-buttons">
+                            <button class="happy" type="button">Happy</button>
+                            <button class="sad" type="button">Sad</button>
+                            <button class="angry" type="button">Angry</button>
+                            <button class="anxious" type="button">Anxious</button>
+                            <button class="calm" type="button">Calm</button>
+                            <button class="lucky" type="button">Lucky</button>
+                        </div>
+                    </div>
+    
+                    <div class="prompt-container">
+                        <!-- Prompt will appear here -->
+                        <div id="prompt-box" class="prompt-box"></div>
+
+                        <form id="mood-form">
+                        <!-- Textarea for reflection -->
+                        <textarea id="reflection-input" placeholder="Write your reflection here..." rows="6" cols="50"></textarea>
+                        </form>
+
+                        <!-- Save button -->
+                        <button type="button" id="save-reflection">Save Reflection</button>
                     </div>
                 </div>
             </div>  
         </div>
-    </form>
 
     <!-- Place script at the end so DOM is loaded -->
+    <script src="script.js"></script>
+
+
+    <!-- Not required to hard code again, reference to the script.js file
+     
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const buttons = document.querySelectorAll('.emotion-buttons button');
@@ -65,8 +92,52 @@
                 });
             });
         });
+    </script> 
+    -->
+
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedReflections = JSON.parse(localStorage.getItem("reflections")) || [];
+    
+            savedReflections.forEach(reflection => {
+                addReflectionToPage(reflection);
+            });
+    
+            document.getElementById("save-reflection").addEventListener("click", () => {
+                const text = document.getElementById("reflection-input").value.trim();
+    
+                if (!text) {
+                    alert("Please write something before saving.");
+                    return;
+                }
+    
+                const reflection = {
+                    text: text,
+                    date: new Date().toLocaleDateString()
+                };
+    
+                // Save to localStorage
+                const reflections = JSON.parse(localStorage.getItem("reflections")) || [];
+                reflections.push(reflection);
+                localStorage.setItem("reflections", JSON.stringify(reflections));
+    
+                // Add to the page
+                addReflectionToPage(reflection);
+    
+                // Clear textarea
+                document.getElementById("reflection-input").value = "";
+            });
+        });
+    
+        function addReflectionToPage(reflection) {
+            const list = document.getElementById("reflection-list");
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>${reflection.date}</strong>: ${reflection.text}`;
+            list.appendChild(li);
+        }
     </script>
-    
-    
+
+
     </body>
 </html>
