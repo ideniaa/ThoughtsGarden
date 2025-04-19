@@ -59,8 +59,8 @@ if (promptBox) {
       // Show the prompt box and set reflection prompt
       if (promptBox && moodData && moodData.prompt) {
         promptBox.innerText = moodData.prompt;
-       // promptBox.style.display = 'block'; // Show prompt box when mood is selected
       }
+
 
       alert(`You planted a ${mood} mood! 🌱`);
     });
@@ -74,10 +74,6 @@ if (promptBox) {
       const promptText = document.getElementById('prompt-box').innerText || "No prompt";
       const moodPlants = JSON.parse(localStorage.getItem('moodPlants')) || [];
 
-      if (!reflectionText) {
-        alert("Please write something before saving.");
-        return;
-      }
 
       const journalEntries = JSON.parse(localStorage.getItem('journalEntries')) || [];
       journalEntries.push({

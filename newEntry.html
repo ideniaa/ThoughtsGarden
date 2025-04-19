@@ -100,30 +100,17 @@
         document.addEventListener("DOMContentLoaded", () => {
             const savedReflections = JSON.parse(localStorage.getItem("reflections")) || [];
     
-            savedReflections.forEach(reflection => {
-                addReflectionToPage(reflection);
-            });
-    
             document.getElementById("save-reflection").addEventListener("click", () => {
                 const text = document.getElementById("reflection-input").value.trim();
+  
     
-                if (!text) {
-                    alert("Please write something before saving.");
-                    return;
-                }
-    
-                const reflection = {
-                    text: text,
-                    date: new Date().toLocaleDateString()
-                };
+                const reflection = { text };
     
                 // Save to localStorage
                 const reflections = JSON.parse(localStorage.getItem("reflections")) || [];
                 reflections.push(reflection);
                 localStorage.setItem("reflections", JSON.stringify(reflections));
     
-                // Add to the page
-                addReflectionToPage(reflection);
     
                 // Clear textarea
                 document.getElementById("reflection-input").value = "";
@@ -133,7 +120,7 @@
         function addReflectionToPage(reflection) {
             const list = document.getElementById("reflection-list");
             const li = document.createElement("li");
-            li.innerHTML = `<strong>${reflection.date}</strong>: ${reflection.text}`;
+            li.textContent = reflection.text;
             list.appendChild(li);
         }
     </script>

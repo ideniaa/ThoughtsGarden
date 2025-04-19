@@ -43,19 +43,21 @@
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 const savedReflections = JSON.parse(localStorage.getItem("reflections")) || [];
-            
+        
+                // Render reflections on the reflection.html page
                 savedReflections.forEach(reflection => {
                     addReflectionToPage(reflection);
                 });
             });
-            
+        
             function addReflectionToPage(reflection) {
                 const list = document.getElementById("reflection-list");
                 const li = document.createElement("li");
-                li.innerHTML = `<strong>${reflection.date}</strong>: ${reflection.text}`;
+                li.textContent = reflection.text; // ✅ just use .text
                 list.appendChild(li);
             }
-            </script>
+        </script>
+        
             
         
 

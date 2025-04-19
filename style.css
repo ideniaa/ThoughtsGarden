@@ -342,15 +342,33 @@ button:active {
 }
 
 
-/*
-<div class="saved-entries-container">
+.saved-entries-container {
+  display: flex; 
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-  <ul class="entry-list" id="entry-list">
-      <!-- New entries added here-->
-  </ul>
+.reflection-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-</div>
-*/
+.reflection-list li {
+  width: 100px;
+  min-height: 100px;
+  padding: 1rem;
+  margin: 5px;
+  background-color: #fff8b3; /* post-it yellow */
+  border: 1px solid #e0c97f;
+  border-radius: 8px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 0.95rem;
+  transform: rotate(-1deg); /* adds some playful tilt */
+  transition: transform 0.2s;
+}
 
 
 
@@ -399,7 +417,6 @@ textarea {
 .button-group .journal-btn {
   margin-right: 10px; /* space between buttons */
 }
-
 
 /* GARDEN PAGE */
 
