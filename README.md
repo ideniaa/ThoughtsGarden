@@ -41,12 +41,11 @@
    git clone https://github.com/yourusername/thought-garden.git
    cd thought-garden
 
+---
+
+## 🎥 Demo Video:
+
+[link here]
 
 
 
-
-
-
-
-# HackAttack
-Demo Video: [link here]
