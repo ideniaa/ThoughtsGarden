@@ -6,7 +6,6 @@
         <meta name = "viewport" content="width=device-width, initial-scale=1.0">
         <title>Thought Garden | New Entry</title>
         <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
 
         <!-- Importing Font from Google-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +18,8 @@
     
         <!-- NAVIGATION BAR-->
         <div class="navbar">
-            <ul>
-                <li><a href="mainPage.html">Thought Garden</a></li>
+            <a href="mainPage.html" class="logo">Thought Garden</a>
+            <ul class="nav-tabs">
                 <li><a href="garden.html">Garden</a></li>
                 <li><a href="newEntry.html">New Entry</a></li>
                 <li><a href="journal.html">Journal</a></li>
@@ -28,22 +27,46 @@
         </div>
 
         <!-- HERO SECTION -->
-
+    <form id="mood-form">
         <div class="choose-emotion">
             <div class="background-img emotion-page-bg"></div>
             <div class = "snap-left">
-                <div class="hero-text">
-                    <h1>How are you feeling?</h1>
+                <div class="mood-container">
+                    <h3>How are you feeling today?</h3>
+                    <div class="emotion-buttons">
+                        <button class="happy" type="button">Happy</button>
+                        <button class="sad" type="button">Sad</button>
+                        <button class="angry" type="button">Angry</button>
+                    </div>
                 </div>
-                <div class="emotion-buttons">
-                    <button class="happy">Happy</button>
-                    <button class="sad">Sad</button>
-                    <button class="angry">Angry</button>
-                </div>
-            </div>
-            
+            </div>  
         </div>
+    </form>
 
+    <!-- Place script at the end so DOM is loaded -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.emotion-buttons button');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const mood = button.className; // happy, sad, angry
+
+                    // Get existing data or start fresh
+                    const moodPlants = JSON.parse(localStorage.getItem('moodPlants')) || [];
+
+                    // Add new mood
+                    moodPlants.push({ mood });
+
+                    // Save to localStorage
+                    localStorage.setItem('moodPlants', JSON.stringify(moodPlants));
+
+                    alert(`You planted a ${mood} mood! 🌱`);
+                });
+            });
+        });
+    </script>
+    
     
     </body>
 </html>

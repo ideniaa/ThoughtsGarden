@@ -12,8 +12,8 @@
     <body>
         <!-- NAVIGATION BAR-->
         <div class="navbar">
-            <ul>
-                <li><a href="mainPage.html">Thought Garden</a></li>
+            <a href="mainPage.html" class="logo">Thought Garden</a>
+            <ul class="nav-tabs">
                 <li><a href="garden.html">Garden</a></li>
                 <li><a href="newEntry.html">New Entry</a></li>
                 <li><a href="journal.html">Journal</a></li>
@@ -25,11 +25,14 @@
             <div class="background-img emotion-page-bg"></div>
             <div class = "centered">
                 <div class="title">
-                    <h1>Journal Entry</h1>
+                    <h2>Journal Entry</h2>
                     <form>
                         <textarea id="userEntry" placeholder="Today I am feeling [emotion] because [explanation]." required></textarea>
+                        <div class="button-group">
+                            <button type="button" onclick="saveText()">Save</button>
+                            <button type="button" onclick="clearText()">Clear</button>
+                        </div>
                     </form>
-                    </div>
                 </div>
             </div>
         </div>

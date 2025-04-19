@@ -6,15 +6,42 @@
         <title>Thought Garden | Garden</title>
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
-    </head>
 
-    <!-- NAVIGATION BAR-->
-    <div class="navbar">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="garden.html">Garden</a></li>
-            <li><a href="newEntry.html">New Entry</a></li>
-            <li><a href="journal.html">Journal</a></li>
-        </ul>
-    </div>
+    </head>
+<body class="gardenBody">'
+    
+        <!-- NAVIGATION BAR-->
+        <div class="navbar">
+            <a href="mainPage.html" class="logo">Thought Garden</a>
+            <ul class="nav-tabs">
+                <li><a href="garden.html">Garden</a></li>
+                <li><a href="newEntry.html">New Entry</a></li>
+                <li><a href="journal.html">Journal</a></li>
+            </ul>
+        </div>
+    
+          <!-- GARDEN GRID -->
+        <div id="garden" class="garden-grid"></div>
+        <button onclick="clearGarden()">Clear Garden</button>
+
+
+        <script>
+            // Load the plants from local storage and display them
+            window.addEventListener('DOMContentLoaded', () => {
+                const garden = document.getElementById('garden');
+                const moodPlants = JSON.parse(localStorage.getItem('moodPlants')) || [];
+
+                moodPlants.forEach(({ mood }) => {
+                const plant = document.createElement('img');
+                plant.src = `./plants/${mood}.png`; // make sure you have images like happy.png, sad.png, etc.
+                plant.alt = mood;
+                plant.classList.add('plant');
+                garden.appendChild(plant);
+            });
+        });
+        
+    </script>
+
+</body>
+        
 </html>

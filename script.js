@@ -1,20 +1,41 @@
-const form = document.getElementById('mood-form');
-const garden = document.getElementById('garden');
+window.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.emotion-buttons button');
+  const garden = document.getElementById('garden');
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
 
-  const mood = document.getElementById('mood').value;
-  const note = document.getElementById('note').value;
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const mood = button.className; // e.g., "happy", "sad", "angry"
 
-  const plant = document.createElement('img');
-  plant.src = `./plants/${mood}.png`; // Store mood plant images in a folder
-  plant.alt = mood;
-  plant.title = note;
+      // Save to localStorage
+      const moodPlants = JSON.parse(localStorage.getItem('moodPlants')) || [];
+      moodPlants.push({ mood });
+      localStorage.setItem('moodPlants', JSON.stringify(moodPlants));
 
-  garden.appendChild(plant);
+      alert(`You planted a ${mood} mood!`);
+
+      // Add the plant image to the garden grid
+      const plant = document.createElement('img');
+      plant.src = `./plants/${mood}.png`; // Make sure the images are named correctly (e.g., happy.png, sad.png)
+      plant.alt = mood;
+      plant.classList.add('plant');
+      garden.appendChild(plant);
+    
+    });
+  });
+
 });
 
+
+// Clear Garden function to remove all plants
+function clearGarden() {
+  localStorage.removeItem('moodPlants'); // Clear the mood plants data from localStorage
+  const garden = document.getElementById('garden');
+  if (garden) {
+      garden.innerHTML = ''; // Clear all the plant images from the garden
+  }
+  alert('Your garden has been cleared!');
+}
 
 
 // TO change background based on emotion, FIX FIX FIX 
