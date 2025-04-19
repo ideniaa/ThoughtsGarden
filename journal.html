@@ -17,25 +17,92 @@
                 <li><a href="garden.html">Garden</a></li>
                 <li><a href="newEntry.html">New Entry</a></li>
                 <li><a href="journal.html">Journal</a></li>
+                <li><a href="reflection.html">Reflections</a></li>
             </ul>
         </div>
 
         <!-- ADDING CLASS FOR JOURNAL PAGE BACKGROUND -->
+
         <div class="journal-entry-page">
-            <div class="background-img emotion-page-bg"></div>
-            <div class = "centered">
+            <div class="background-img journal-page-bg"></div>
+            <div class = "journal-centered">
                 <div class="title">
                     <h2>Journal Entry</h2>
                     <form>
+                        <label>Entry Date:</label>
+                        <input type="date" id="entryDate" required>
+                        
+                        <p></p>
+                        
+                        <!-- USER ENTRY HERE -->
                         <textarea id="userEntry" placeholder="Today I am feeling [emotion] because [explanation]." required></textarea>
+
+                        <!-- Save and Clear buttons -->
                         <div class="button-group">
                             <button type="button" onclick="saveText()">Save</button>
                             <button type="button" onclick="clearText()">Clear</button>
                         </div>
                     </form>
                 </div>
+
+                <!-- DISPLAYING SAVED ENTRIES -->
+                <div class="saved-entries-container">
+                    <ul class="entry-list" id="entry-list">
+                        <!-- New entries added here-->
+                    </ul>
+                </div>
+
             </div>
         </div>
     
+
+        <script>
+
+            window.addEventListener('DOMContentLoaded', () => {
+            const entries = JSON.parse(localStorage.getItem("entries")) || [];
+            entries.forEach(entry => {
+                addEntryToFAQList(entry.date, entry.text);
+            });
+            });
+
+            //Load existing entries
+            function saveText() {
+                // Get Date from form
+                const date = document.getElementById("entryDate").value;
+                // Get Entry from form
+                const text = document.getElementById("userEntry").value;
+
+                if (!date || !text) {
+                    alert("Please fill in both fields.");
+                    return;
+                }
+
+                // Save to local storage
+                const entry = JSON.parse(localStorage.getItem("entries")) || [];
+        
+                entry.push({ date, text });
+
+                localStorage.setItem("entries", JSON.stringify(entry));
+
+                //Add to the page
+                addEntryToPage(date, text);
+
+                //Reset the form
+                document.getElementById("entryDate").value = "";
+                document.getElementById("userEntry").value = "";
+            }
+
+            // Function to add entry to the page
+            function addEntryToPage(date, text) {
+                const entryList = document.getElementById("entry-list");
+                const li = document.createElement("li");
+                li.innerHTML = `<strong>${date}</strong>: ${text}`;
+                entryList.appendChild(li);
+            }
+            list.appendChild(li);
+        </script> 
+         
+        
+
     </body>
 </html>
