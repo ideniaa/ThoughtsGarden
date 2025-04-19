@@ -30,7 +30,7 @@
 
 - **Frontend**: HTML, CSS, JavaScript
 - **Storage**: LocalStorage (client-side)
-- **Design Tools**: Figma/Canva (for mockups and assets)
+- **Design Tools**: Figma [link here] (for mockups and assets)
 
 ---
 
