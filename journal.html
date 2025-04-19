@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset= "UTF-8">
-        <meta> name="viewport", content="width=device-width initial-scale=1.0">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Thought Garden | Journal</title>
         <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
+        <script src="journalScript.js"></script>
     </head>
+    
     <body>
-        <!-- FINISH -->
+        <!-- NAVIGATION BAR-->
+        <div class="navbar">
+            <ul>
+                <li><a href="mainPage.html">Thought Garden</a></li>
+                <li><a href="garden.html">Garden</a></li>
+                <li><a href="newEntry.html">New Entry</a></li>
+                <li><a href="journal.html">Journal</a></li>
+            </ul>
+        </div>
+
+        <!-- ADDING CLASS FOR JOURNAL PAGE BACKGROUND -->
+        <div class="journal-entry-page">
+            <div class="background-img emotion-page-bg"></div>
+            <div class = "centered">
+                <div class="title">
+                    <h1>Journal Entry</h1>
+                    <form>
+                        <textarea id="userEntry" placeholder="Today I am feeling [emotion] because [explanation]." required></textarea>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
     </body>
 </html>
