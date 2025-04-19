@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset= "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Thought Garden | Journal</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="journalScript.js"></script>
+    </head>
+    
+    <body>
+        <!-- NAVIGATION BAR-->
+        <div class="navbar">
+            <a href="mainPage.html" class="logo">Thought Garden</a>
+            <ul class="nav-tabs">
+                <li><a href="garden.html">Garden</a></li>
+                <li><a href="newEntry.html">New Entry</a></li>
+                <li><a href="journal.html">Journal</a></li>
+                <li><a href="reflection.html">Reflections</a></li>
+            </ul>
+        </div>
+
+        <!-- ADDING CLASS FOR JOURNAL PAGE BACKGROUND -->
+
+        <div class="journal-entry-page">
+            <div class="background-img journal-page-bg"></div>
+            <div class = "journal-centered">
+                <div class="title">
+                    <h2>Reflections</h2>
+                    
+                    <div class="saved-reflections-container">
+                        <ul class="reflection-list" id="reflection-list">
+                            <!-- New entries added here-->
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const savedReflections = JSON.parse(localStorage.getItem("reflections")) || [];
+            
+                savedReflections.forEach(reflection => {
+                    addReflectionToPage(reflection);
+                });
+            });
+            
+            function addReflectionToPage(reflection) {
+                const list = document.getElementById("reflection-list");
+                const li = document.createElement("li");
+                li.innerHTML = `<strong>${reflection.date}</strong>: ${reflection.text}`;
+                list.appendChild(li);
+            }
+            </script>
+            
+        
+
+    </body> 
+</html>
