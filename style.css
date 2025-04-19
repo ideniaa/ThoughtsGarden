@@ -1,0 +1,184 @@
+
+
+/* Importing fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Jersey+15&display=swap');
+
+
+/* Setting the background for the main page */
+body {
+    font-family: "Jersey 15", sans-serif;
+    text-align: center;
+    background: url("./mainPage.png");
+    background-size: cover;
+}
+
+.html {
+  font-family: "Jersey 15", sans-serif;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+/*** NAV BAR ***/
+.navbar ul {
+  z-index: 1000; /* Ensures the navbar is on top of other elements */
+  list-style-type: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  background-color: #414064;
+  border-bottom: 2px solid black;
+}
+
+.navbar ul li {
+  float: left;
+  margin: 10px;
+}
+
+.navbar ul li a {
+  display: block;
+  text-decoration: none; /* removes underline from link */
+  color: #e2ddb8;
+  padding: 5px;
+}
+
+.navbar ul li a:hover {
+border-radius: 3px;
+color:rgb(217, 87, 6);
+background-color: #e2ddb8;
+}
+
+/* Main Page background image */
+.background-img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  background-size: cover; /* Stretch width and height */
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  z-index: 0;
+}
+
+/* Override background for specific pages */
+.main-page-bg {
+  background-image: url(images/mainPage.png);
+}
+
+.emotion-page-bg {
+  background-image: url(images/newEntry.png);
+}
+
+
+
+.snap-left {
+  width: 50%;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 1), -1px -1px 3px rgba(0, 0, 0, 1);
+
+  color: #ffffff;
+
+
+  position: absolute;
+  top: 40%;
+  left: 5%; /* or whatever distance from the left you want */
+  transform: translateY(-50%); /* only move it up vertically now */
+}
+
+
+
+
+button {
+  font-family: "Jersey 15", sans-serif;
+  font-size: 20px;
+  padding: 10px;
+  background-color: orange;
+  color: rgb(0, 0, 0);
+  border-radius: 5px;
+  border: none;
+  
+}
+
+img {
+  width: 80px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+
+
+/* New Entry page to enter emotion and entry*/
+.choose-emotion {
+  background-color: white;
+}
+
+.emotion-buttons {
+  display: flex;
+  flex-direction: column; /* stack buttons vertically */
+  align-items: center; /* align to the left (or use center if you prefer) */
+  gap: 1rem; /* spacing between buttons */
+  margin-top: 1rem;
+}
+
+/* Optional: give all buttons a shared base style */
+.emotion-buttons button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* FIX THIS */
+.emotions-button button:active {
+  background-color: grey;
+  transform: scale(0.98);
+}
+
+.happy {
+  width: 80px;
+  background-color: #508056; /* bright yellow */
+  color: white;
+}
+
+.sad {
+  width: 80px;
+  background-color: #1C1A76; /* light blue */
+  color: white;
+}
+
+.angry {
+  width: 80px;
+  background-color: #9E2123; /* tomato red */
+  color: white;
+}
+
+
+#garden {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+    padding: 20px;
+  }
+img {
+    width: 80px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+
+img:hover {
+    transform: scale(1.1);
+  }
