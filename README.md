@@ -1,5 +1,7 @@
 # 🌱 Thought Garden: Visual Emotions Journal
 
+## Won Best UI/UX for BroncoHacks 2025!
+
 **Tagline:** _Grow through what you go through._
 
 **Thought Garden** is a calm, creative journaling app where each emotion you log becomes a unique plant in your digital garden. It's a gentle and visual way to reflect on your emotions and see how they evolve over time.
